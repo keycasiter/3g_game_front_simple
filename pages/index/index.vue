@@ -1,17 +1,16 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
+		<tabbar :selected='selected'> </tabbar>
 	</view>
 </template>
 
 <script>
+	import tabbar from '@/common/tabbar.vue'
+
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				selected: 0,
 			}
 		},
 		onLoad() {
@@ -19,6 +18,9 @@
 		},
 		methods: {
 
+		},
+		components: {
+			tabbar
 		}
 	}
 </script>
@@ -31,22 +33,13 @@
 		justify-content: center;
 	}
 
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
+	.general_body {
+		width: 100%;
 		display: flex;
-		justify-content: center;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
 	}
 
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+	.general_info {}
 </style>
