@@ -19,8 +19,10 @@
 <script>
 	export default {
 		onLoad(data) {
-			console.log(data)
+			// console.log(data)
 			this.generalIndex = data.generalIndex
+		},
+		onShow() {
 			this.queryGeneralList()
 		},
 		data() {
@@ -45,9 +47,7 @@
 			selectGeneral(data) {
 				uni.$emit('selectGeneralIndex', this.generalIndex)
 				uni.$emit('selectGeneralData', data)
-				uni.navigateBack({
-					delta: 1
-				})
+				uni.navigateBack()
 			},
 			queryGeneralList() {
 				uni.request({
@@ -63,7 +63,7 @@
 						PageSize: 500
 					},
 					success: res => {
-						console.log(res)
+						// console.log(res)
 						this.generalListData = res.data.GeneralList
 					}
 				});

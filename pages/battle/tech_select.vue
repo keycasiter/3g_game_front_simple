@@ -18,6 +18,9 @@
 
 <script>
 	export default {
+		onLoad(data) {
+
+		},
 		onShow() {
 			this.queryTechList()
 		},

@@ -29,6 +29,16 @@
 					"scrollIndicator": "none"
 				}
 			}
+		},
+		{
+			"path": "pages/battle/warbook_select",
+			"style": {
+				"navigationBarTitleText": "兵书选择",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
 		}
 	],
 	"globalStyle": {

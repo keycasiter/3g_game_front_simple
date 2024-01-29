@@ -42,23 +42,7 @@
 					{{generalData.warbookData[0].name}}
 				</view>
 				<view v-else>
-					<button size="mini" type="primary" plain>选择兵书</button>
-				</view>
-			</view>
-			<view class="warbook_name">
-				<view v-if="generalData.warbookData[1].name!=''">
-					{{generalData.warbookData[1].name}}
-				</view>
-				<view v-else>
-					<button size="mini" type="primary" plain>选择兵书</button>
-				</view>
-			</view>
-			<view class="warbook_name">
-				<view v-if="generalData.warbookData[2].name!=''">
-					{{generalData.warbookData[2].name}}
-				</view>
-				<view v-else>
-					<button size="mini" type="primary" plain>选择兵书</button>
+					<button size="mini" type="primary" plain @click="chooseWarbook">选择兵书</button>
 				</view>
 			</view>
 		</view>
@@ -69,7 +53,7 @@
 					{{item.name}}
 				</view>
 				<view v-else>
-					<button size="mini" type="primary" plain>选择特技</button>
+					<button size="mini" type="primary" plain @click="chooseTech">选择特技</button>
 				</view>
 			</view>
 		</view>
@@ -100,11 +84,42 @@
 				})
 			},
 			chooseTactic(data) {
+				if (this.generalData.name == '') {
+					uni.showToast({
+						icon: "error",
+						title: "请先选择武将"
+					})
+					return
+				}
+
 				uni.navigateTo({
-					url: "/pages/battle/tactic_select"
+					url: "/pages/battle/tactic_select?generalIndex=" + this.generalData.index + "&tacticIndex=" +
+						data
+				})
+			},
+			chooseWarbook() {
+				if (this.generalData.name == '') {
+					uni.showToast({
+						icon: "error",
+						title: "请先选择武将"
+					})
+					return
+				}
+
+				uni.navigateTo({
+					url: "/pages/battle/warbook_select?generalIndex=" + this.generalData.index + "&generalId=" +
+						this.generalData.id
 				})
 			},
 			chooseTech() {
+				if (this.generalData.name == '') {
+					uni.showToast({
+						icon: "error",
+						title: "请先选择武将"
+					})
+					return
+				}
+
 				uni.navigateTo({
 					url: "/pages/battle/tech_select"
 				})

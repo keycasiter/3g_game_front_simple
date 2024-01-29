@@ -20,11 +20,19 @@
 
 <script>
 	export default {
+		onLoad(data) {
+			this.generalIndex = data.generalIndex
+			this.tacticIndex = data.tacticIndex
+		},
 		onShow() {
 			this.queryTacticList()
 		},
 		data() {
 			return {
+				//传递参数
+				generalIndex: 0,
+				tacticIndex: 0,
+
 				//查询数据
 				searchTacticName: "",
 				searchTacticType: 0,
@@ -40,7 +48,9 @@
 				this.queryTacticList()
 			},
 			selectTactic(data) {
-				uni.$emit('selectedGeneralData', data)
+				uni.$emit('selectGeneralIndex', this.generalIndex)
+				uni.$emit('selectTacticIndex', this.tacticIndex)
+				uni.$emit('selectTacticData', data)
 				uni.navigateBack()
 			},
 			queryTacticList() {
