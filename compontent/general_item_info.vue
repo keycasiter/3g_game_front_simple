@@ -38,8 +38,8 @@
 		<view class="warbook_container">
 			<view>武将兵书</view>
 			<view class="warbook_name">
-				<view v-if="generalData.warbookData[0].name!=''">
-					{{generalData.warbookData[0].name}}
+				<view v-if="generalData.warbookData[1].type>0">
+					{{getWarbookType()}}
 				</view>
 				<view v-else>
 					<button size="mini" type="primary" plain @click="chooseWarbook">选择兵书</button>
@@ -78,6 +78,20 @@
 			}
 		},
 		methods: {
+			getWarbookType() {
+				switch (this.generalData.warbookData[1].type) {
+					case 1:
+						return "作战"
+					case 2:
+						return "军形"
+					case 3:
+						return "虚实"
+					case 4:
+						return "九变"
+					default:
+						return ""
+				}
+			},
 			chooseGeneral() {
 				uni.navigateTo({
 					url: "/pages/battle/general_select?generalIndex=" + this.generalData.index

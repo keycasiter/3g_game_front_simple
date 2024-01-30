@@ -27,7 +27,7 @@
 				// console.log(data)
 				that.selectTacticIndex = data
 			})
-			//武将信息
+			//选择武将信息
 			uni.$once('selectGeneralData', function(data) {
 				// console.log(data)
 				let generalData = that.generalListData[that.selectGeneralIndex]
@@ -39,12 +39,18 @@
 				//武将自带战法名称
 				generalData.tacticData[0].name = data.BaseInfo.SelfTactic.Name
 			})
-			//战法信息
+			//选择战法信息
 			uni.$once('selectTacticData', function(data) {
 				let generalData = that.generalListData[that.selectGeneralIndex]
 				let tacticData = generalData.tacticData[that.selectTacticIndex]
 
 				tacticData.name = data.Name
+			})
+			//选择兵书信息
+			uni.$once('selectWarbookData', function(data) {
+				console.log(data)
+				let generalData = that.generalListData[that.selectGeneralIndex]
+				generalData.warbookData = data
 			})
 			this.$forceUpdate()
 		},
@@ -70,16 +76,17 @@
 								name: "",
 							}
 						],
-						warbookData: [{
-								name: "",
+						warbookData: {
+							"1": {
+								type: 0
 							},
-							{
-								name: "",
+							"2": {
+								name: ""
 							},
-							{
-								name: "",
-							}
-						],
+							"3": [{
+								name: ""
+							}]
+						},
 						techData: [{
 							name: "",
 						}, ]
@@ -99,16 +106,17 @@
 								name: "",
 							}
 						],
-						warbookData: [{
-								name: "",
+						warbookData: {
+							"1": {
+								type: 0
 							},
-							{
-								name: "",
+							"2": {
+								name: ""
 							},
-							{
-								name: "",
-							}
-						],
+							"3": [{
+								name: ""
+							}]
+						},
 						techData: [{
 							name: "",
 						}, ]
@@ -128,16 +136,17 @@
 								name: "",
 							}
 						],
-						warbookData: [{
-								name: "",
+						warbookData: {
+							"1": {
+								type: 0
 							},
-							{
-								name: "",
+							"2": {
+								name: ""
 							},
-							{
-								name: "",
-							}
-						],
+							"3": [{
+								name: ""
+							}]
+						},
 						techData: [{
 							name: "",
 						}, ]
