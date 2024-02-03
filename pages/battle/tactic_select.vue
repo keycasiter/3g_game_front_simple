@@ -12,8 +12,10 @@
 			<button size="mini" type="primary" plain @click="setTacticType(5)">阵法</button>
 			<button size="mini" type="primary" plain @click="setTacticType(6)">兵种</button>
 		</view>
-		<view class="list" v-for="item in tacticListData">
-			<button size="mini" type="primary" plain @click="selectTactic(item)">{{item.Name}}</button>
+		<view class="list">
+			<view v-for="item in tacticListData">
+				<button size="mini" type="primary" plain @click="selectTactic(item)">{{item.Name}}</button>
+			</view>
 		</view>
 	</view>
 </template>
@@ -84,6 +86,12 @@
 		.input {
 			display: flex;
 			flex-direction: row;
+		}
+
+		.list {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
 		}
 	}
 </style>

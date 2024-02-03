@@ -2,15 +2,15 @@
 	<view class="general_info">
 		<view>
 			主将
-			<generalItemInfo :generalData="generalListData[0]"></generalItemInfo>
+			<generalItemInfo :generalData="generalListData[0]" :teamType="teamType"></generalItemInfo>
 		</view>
 		<view>
 			副将
-			<generalItemInfo :generalData="generalListData[1]"></generalItemInfo>
+			<generalItemInfo :generalData="generalListData[1]" :teamType="teamType"></generalItemInfo>
 		</view>
 		<view>
 			副将
-			<generalItemInfo :generalData="generalListData[2]"></generalItemInfo>
+			<generalItemInfo :generalData="generalListData[2]" :teamType="teamType"></generalItemInfo>
 		</view>
 	</view>
 </template>
@@ -20,7 +20,9 @@
 	export default {
 		props: {
 			//武将信息
-			generalListData: Object
+			generalListData: Object,
+			//队伍类型
+			teamType: String,
 		},
 		data() {
 			return {

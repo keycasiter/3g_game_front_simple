@@ -38,8 +38,12 @@
 		<view class="warbook_container">
 			<view>武将兵书</view>
 			<view class="warbook_name">
-				<view v-if="generalData.warbookData[1].type>0">
+				<view v-if="generalData.warbookData[1]>0">
 					{{getWarbookType()}}
+					{{generalData.warbookData[2].name}}
+					<view v-for="item in generalData.warbookData[3]">
+						{{item.name}}
+					</view>
 				</view>
 				<view v-else>
 					<button size="mini" type="primary" plain @click="chooseWarbook">选择兵书</button>
@@ -48,9 +52,11 @@
 		</view>
 		<view class="tech_container">
 			<view>特技</view>
-			<view class="tech_name" v-for="item in generalData.techData">
-				<view v-if="generalData.techData.length>0" v-for="item in generalData.techData">
-					{{item.name}}
+			<view class=“>
+				<view v-if="generalData.techData.size>0">
+					<view v-for="item in generalData.techData">
+						{{item.Name}}
+					</view>
 				</view>
 				<view v-else>
 					<button size="mini" type="primary" plain @click="chooseTech">选择特技</button>
@@ -70,7 +76,9 @@
 	export default {
 		props: {
 			//武将信息
-			generalData: Object
+			generalData: Object,
+			//队伍类型
+			teamType: String,
 		},
 		data() {
 			return {
@@ -79,7 +87,7 @@
 		},
 		methods: {
 			getWarbookType() {
-				switch (this.generalData.warbookData[1].type) {
+				switch (this.generalData.warbookData[1]) {
 					case 1:
 						return "作战"
 					case 2:
@@ -94,7 +102,8 @@
 			},
 			chooseGeneral() {
 				uni.navigateTo({
-					url: "/pages/battle/general_select?generalIndex=" + this.generalData.index
+					url: "/pages/battle/general_select?teamType=" + this.teamType + "&generalIndex=" + this
+						.generalData.index
 				})
 			},
 			chooseTactic(data) {
@@ -157,6 +166,11 @@
 	}
 
 	.warbook_container {
+		border-top: 0.5px solid #ccc;
+		border-bottom: 0.5px solid #ccc;
+	}
+
+	.tech_container {
 		border-top: 0.5px solid #ccc;
 		border-bottom: 0.5px solid #ccc;
 	}

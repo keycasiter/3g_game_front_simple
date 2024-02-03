@@ -39,6 +39,16 @@
 					"scrollIndicator": "none"
 				}
 			}
+		},
+		{
+			"path": "pages/battle/tech_select",
+			"style": {
+				"navigationBarTitleText": "特技选择",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
 		}
 	],
 	"globalStyle": {

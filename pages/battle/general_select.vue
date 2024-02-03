@@ -10,8 +10,10 @@
 			<button size="mini" type="primary" plain @click="setGeneralGroup(3)">吴</button>
 			<button size="mini" type="primary" plain @click="setGeneralGroup(4)">群</button>
 		</view>
-		<view class="list" v-for="item in generalListData">
-			<button size="mini" type="primary" plain @click="selectGeneral(item)">{{item.BaseInfo.Name}}</button>
+		<view class="list">
+			<view v-for="item in generalListData">
+				<button size="mini" type="primary" plain @click="selectGeneral(item)">{{item.BaseInfo.Name}}</button>
+			</view>
 		</view>
 	</view>
 </template>
@@ -20,6 +22,7 @@
 	export default {
 		onLoad(data) {
 			// console.log(data)
+			this.teamType = data.teamType
 			this.generalIndex = data.generalIndex
 		},
 		onShow() {
@@ -28,6 +31,7 @@
 		data() {
 			return {
 				//传递参数
+				teamType: 0,
 				generalIndex: 0,
 
 				//查询数据
@@ -45,6 +49,7 @@
 				this.queryGeneralList()
 			},
 			selectGeneral(data) {
+				uni.$emit('selectTeamType', this.teamType)
 				uni.$emit('selectGeneralIndex', this.generalIndex)
 				uni.$emit('selectGeneralData', data)
 				uni.navigateBack()
@@ -79,6 +84,12 @@
 		.input {
 			display: flex;
 			flex-direction: row;
+		}
+
+		.list {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
 		}
 	}
 </style>

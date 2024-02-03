@@ -49,7 +49,7 @@
 
 			//默认兵书类型
 			this.searchWarbookType = 1
-			this.warbookData[1].type = this.searchWarbookType
+			this.warbookData[1] = this.searchWarbookType
 		},
 		onShow() {
 			this.queryWarbookList()
@@ -60,7 +60,7 @@
 				generalIndex: 0,
 				warbookData: {
 					//兵书类型
-					"1": {},
+					"1": 0,
 					//大兵书
 					"2": {},
 					//小兵书
@@ -97,7 +97,7 @@
 			},
 			setWarbookType(data) {
 				this.searchWarbookType = data
-				this.warbookData[1].type = data
+				this.warbookData[1] = data
 				this.queryWarbookList()
 			},
 			queryWarbookList() {
@@ -119,7 +119,7 @@
 				this.$forceUpdate()
 			},
 			reset() {
-				this.warbookData[1] = {}
+				this.warbookData[1] = 0
 				this.warbookData[2] = {}
 				this.warbookData[3] = []
 			},
